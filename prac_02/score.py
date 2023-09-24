@@ -18,13 +18,14 @@ def main():
 def determine_score_result(score):
     """Determine score result from provided value"""
     if score < 0 or score > 100:
-        return "Invalid score"
+        result = "Invalid score"
     elif score >= 90:
-        return "Excellent"
+        result = "Excellent"
     elif score >= 50:
-        return "Passable"
+        result = "Passable"
     else:  # score < 50
-        return "Bad"
+        result = "Bad"
+    return result
 
 
 main()
