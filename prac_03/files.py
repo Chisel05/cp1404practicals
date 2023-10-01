@@ -22,8 +22,8 @@ def main():
     # 4.
     numbers_total = 0
     with open("numbers.txt", "r") as in_file:
-        for lines in in_file:
-            numbers_total += int(lines)
+        for line in in_file:
+            numbers_total += int(line)
         print(numbers_total)
 
 
