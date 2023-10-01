@@ -1,9 +1,10 @@
 """
-files.py
+Practice reading files in different ways
 """
 
 
 def main():
+    """Read files in various ways"""
     # 1.
     name = input("Name: ")
     with open("name.txt", "w") as out_file:
