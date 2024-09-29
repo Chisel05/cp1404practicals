@@ -2,11 +2,13 @@
 CP1404/CP5632 - Practical
 Broken program to determine score status
 """
+from random import randint
 
 
 def main():
-    score = float(input("Enter score: "))
-    print(get_score_category(score))
+    score = int(input("Enter score: "))
+    print(f"Your score of {score} is considered {get_score_category(score)}!")
+    print_random_score_result()
 
 
 def get_score_category(score):
@@ -19,6 +21,12 @@ def get_score_category(score):
     else:
         score_category = "Bad"
     return score_category
+
+
+def print_random_score_result():
+    random_score = randint(1, 100)
+    get_score_category(random_score)
+    print(f"Random score of {random_score} is considered {get_score_category(random_score)}!")
 
 
 main()
