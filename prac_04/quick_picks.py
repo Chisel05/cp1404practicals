@@ -20,8 +20,12 @@ def main():
         quick_picks.sort()
         quick_pick_sets.append(quick_picks)
 
-    for quick_picks in quick_pick_sets:
-        for pick in quick_picks:
+    print_sets_formatted(quick_pick_sets)
+
+
+def print_sets_formatted(sets):
+    for single_set in sets:
+        for pick in single_set:
             print(f"{pick:2}", end=" ")
         print()
 
