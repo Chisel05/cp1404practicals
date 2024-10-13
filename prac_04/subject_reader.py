@@ -8,8 +8,6 @@ FILENAME = "subject_data.txt"
 
 def main():
     data = load_data()
-    print(data)
-
     display_subjects(data)
 
 
