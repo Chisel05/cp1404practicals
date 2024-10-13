@@ -11,6 +11,16 @@ def main():
 
     print_list_facts(numbers)
 
+    usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface',
+                 'BaseStdIn', 'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer',
+                 'bob']
+
+    username = input("Enter a username: ")
+    if username in usernames:
+        print("Access granted")
+    else:
+        print("Access denied")
+
 
 def print_list_facts(numbers):
     print(f"The first number is {numbers[0]}"
