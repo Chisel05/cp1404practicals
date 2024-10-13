@@ -26,7 +26,7 @@ def load_data():
 def display_subjects(data):
     for subject in range(len(data)):
         subject_parts = data[subject]
-        print(f"{subject_parts[0]} is taught by {subject_parts[1]} and has {subject_parts[2]}")
+        print(f"{subject_parts[0]} is taught by {subject_parts[1]} and has {subject_parts[2]} students")
 
 
 main()
