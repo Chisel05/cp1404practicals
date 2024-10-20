@@ -17,7 +17,6 @@ TO BE DONE:
 - eliminate (1) set without sacrificing functionality
 - refactor main into (2) extra functions
 """
-
 FILENAME = 'wimbledon.csv'
 
 
@@ -40,6 +39,7 @@ def main():
         print(f"{name} {name_to_championships_won[name]}")
 
     countries = {line_data[3] for line_data in records_data[1:]}
+    countries = sorted([country for country in countries])
     print(f"\nThese {len(countries)} countries have won Wimbledon:")
     print(", ".join(countries))
 
