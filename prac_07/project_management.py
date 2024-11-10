@@ -36,6 +36,7 @@ def main():
             complete_projects.sort()
             for complete_project in complete_projects:
                 print(complete_project)
+
         elif option == 'F':
             # Get day, month, year for search date
             day, month, year = (input("Show projects that start after date (dd/mm/yy): ").split('/'))
@@ -43,7 +44,8 @@ def main():
             search_date = datetime.date(int(year), int(month), int(day))
             # Get filtered list of projects
             filtered_projects = get_filtered_projects(projects, search_date)
-
+            # Print list of filtered objects
+            filtered_projects.sort(key=lambda project: project.start_date, reverse=True)
             for filtered_project in filtered_projects:
                 print(filtered_project)
 
