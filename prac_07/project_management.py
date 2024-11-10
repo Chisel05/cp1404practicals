@@ -63,15 +63,20 @@ def main():
                 print(i, project)
             project_choice = int(input("Project choice: "))
             print(projects[project_choice])
-            new_percentage = int(input("New percentage: "))
-            new_priority = int(input("New priority: "))
-            projects[project_choice].completion_percentage = new_percentage
-            projects[project_choice].priority = new_priority
+            update_project(project_choice, projects)
         else:
             print("Invalid option!")
         # Get option for next loop
         print_menu()
         option = input('>>> ').upper()
+
+
+def update_project(project_choice, projects):
+    """Update specific project from given list of projects."""
+    new_percentage = int(input("New percentage: "))
+    new_priority = int(input("New priority: "))
+    projects[project_choice].completion_percentage = new_percentage
+    projects[project_choice].priority = new_priority
 
 
 def add_new_project(projects):
