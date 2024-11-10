@@ -1,6 +1,8 @@
 """
 Estimate time: 60min
 Actual time:
+
+Program for managing various projects, loading & storing said projects in a default or specified text file.
 """
 from project import Project
 import datetime
@@ -26,9 +28,11 @@ def main():
                 out_file = open(filename, "w")
                 out_file.close()
             print(f"Loaded {len(projects)} projects from {filename}")
+
         elif option == 'S':
             filename = input("Filename: ")
             save_projects(filename, projects)
+
         elif option == 'D':
             # Display incomplete projects, sorted by priority
             print("Incomplete projects:")
@@ -51,13 +55,14 @@ def main():
             # Get filtered list of projects
             filtered_projects = get_filtered_projects(projects, search_date)
             # Print list of filtered objects
-            filtered_projects.sort(key=lambda project: project.start_date, reverse=True)
+            # filtered_projects.sort(key=lambda project: project.start_date, reverse=True)
             for filtered_project in filtered_projects:
                 print(filtered_project)
 
         elif option == 'A':
             print("Let's add a new project")
             add_new_project(projects)
+
         elif option == 'U':
             for i, project in enumerate(projects):
                 print(i, project)
@@ -72,12 +77,13 @@ def main():
             except ValueError:
                 new_priority = projects[project_choice].priority
             projects[project_choice].update_project(new_percentage, new_priority)
+
         else:
             print("Invalid option!")
-        # Get option for next loop
         print_menu()
         option = input('>>> ').upper()
-    save_option = input(f"Would you like to save {filename}? ")
+
+    save_option = input(f"Would you like to save to {filename}? ").upper()
     if save_option == 'Y':
         save_projects(filename, projects)
     print("Thank you for using custom-built project management software.")
