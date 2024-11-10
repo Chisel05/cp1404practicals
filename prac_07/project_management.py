@@ -89,7 +89,7 @@ def get_filtered_projects(projects, search_date):
     for project in projects:
         parts = project.start_date.split('/')
         project_date = datetime.date(int(parts[2]), int(parts[1]), int(parts[0]))
-        if project_date > search_date:
+        if project_date >= search_date:
             filtered_projects.append(project)
     filtered_projects.sort()
     return filtered_projects
