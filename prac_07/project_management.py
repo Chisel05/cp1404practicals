@@ -37,17 +37,16 @@ def main():
             for complete_project in complete_projects:
                 print(complete_project)
         elif option == 'F':
-            search_date = (input("Show projects that start after date (dd/mm/yy): ").split('/'))
-            search_date = datetime.date(int(search_date[2]), int(search_date[1]), int(search_date[0]))
-            filtered_projects = []
-            for project in projects:
-                parts = project.start_date.split('/')
-                project_date = datetime.date(int(parts[2]), int(parts[1]), int(parts[0]))
-                if project_date > search_date:
-                    filtered_projects.append(project)
-            filtered_projects.sort()
+            # Get day, month, year for search date
+            day, month, year = (input("Show projects that start after date (dd/mm/yy): ").split('/'))
+            # Construct search date as Date object
+            search_date = datetime.date(int(year), int(month), int(day))
+            # Get filtered list of projects
+            filtered_projects = get_filtered_projects(projects, search_date)
+
             for filtered_project in filtered_projects:
                 print(filtered_project)
+
         elif option == 'A':
             print("Let's add a new project")
             add_new_project(projects)
@@ -66,6 +65,18 @@ def main():
     if save_option == 'Y':
         save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
+
+
+def get_filtered_projects(projects, search_date):
+    """Return filtered version of list of projects by provided date."""
+    filtered_projects = []
+    for project in projects:
+        parts = project.start_date.split('/')
+        project_date = datetime.date(int(parts[2]), int(parts[1]), int(parts[0]))
+        if project_date > search_date:
+            filtered_projects.append(project)
+    filtered_projects.sort()
+    return filtered_projects
 
 
 def save_projects(filename, projects):
