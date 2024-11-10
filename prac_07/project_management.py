@@ -30,7 +30,7 @@ def main():
             incomplete_projects.sort()
             for incomplete_project in incomplete_projects:
                 print(incomplete_project)
-            # Display complete projects, sorted by date
+            # Display complete projects, sorted by priority
             print("Completed projects:")
             complete_projects = [project for project in projects if project.completion_percentage == 100]
             complete_projects.sort()
@@ -64,7 +64,7 @@ def main():
         option = input('>>> ').upper()
     save_option = input(f"Would you like to save {FILENAME}? ")
     if save_option == 'Y':
-        pass
+        save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
 
 
