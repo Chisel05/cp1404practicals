@@ -24,7 +24,7 @@ def main():
             filename = input("Filename: ")
             save_projects(filename, projects)
         elif option == 'D':
-            # Display incomplete projects, sorted by date
+            # Display incomplete projects, sorted by priority
             print("Incomplete projects:")
             incomplete_projects = [project for project in projects if project.completion_percentage < 100]
             incomplete_projects.sort()
