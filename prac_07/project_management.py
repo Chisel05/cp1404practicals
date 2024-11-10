@@ -22,14 +22,7 @@ def main():
             print(f"Loaded {len(projects)} projects from {filename}")
         elif option == 'S':
             filename = input("Filename: ")
-            with open(filename, "w") as out_file:
-                # Write CSV header line
-                print("Name\tStart Date\tCost Estimate\tCompletion Percentage", file=out_file)
-                # Write each project of projects list in correct format
-                for project in projects:
-                    out_file.write(
-                        f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
-                print(f"{len(projects)} saved to {FILENAME}")
+            save_projects(filename, projects)
         elif option == 'D':
             # Display incomplete projects, sorted by date
             print("Incomplete projects:")
@@ -69,6 +62,22 @@ def main():
         # Get option for next loop
         print_menu()
         option = input('>>> ').upper()
+    save_option = input(f"Would you like to save {FILENAME}? ")
+    if save_option == 'Y':
+        pass
+    print("Thank you for using custom-built project management software.")
+
+
+def save_projects(filename, projects):
+    """Save list of projects (write) to specified file."""
+    with open(filename, "w") as out_file:
+        # Write CSV header line
+        print("Name\tStart Date\tCost Estimate\tCompletion Percentage", file=out_file)
+        # Write each project of projects list in correct format
+        for project in projects:
+            out_file.write(
+                f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
+        print(f"{len(projects)} saved to {FILENAME}")
 
 
 def update_project(project_choice, projects):
