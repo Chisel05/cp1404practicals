@@ -5,6 +5,7 @@ Module containing Project class.
 
 class Project:
     def __init__(self, name, start_date, priority, cost_estimate, completion_percentage):
+        """Create Project class with following attributes."""
         self.name = name
         self.start_date = start_date
         self.priority = priority
@@ -16,3 +17,10 @@ class Project:
 
     def __lt__(self, other):
         return self.priority < other.priority
+
+    def update_project(self, new_percentage, new_priority):
+        if 0 <= new_priority <= 100:
+            self.priority = new_percentage
+        self.completion_percentage = new_percentage
+        if 0 < new_priority <= 10:
+            self.priority = new_priority

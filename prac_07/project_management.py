@@ -5,21 +5,26 @@ Actual time:
 from project import Project
 import datetime
 
-FILENAME = "projects.txt"
+DEFAULT_FILENAME = "projects.txt"
 
 
 def main():
     """Project management program with multiple features including: loading projects from a file, adding projects, updating projects, filtering projects, displaying your list of projects, and saving your list of projects"""
     print("Welcome to Pythonic Project Management")
-    projects = load_and_process_file(FILENAME)
-    print(f"Loaded {len(projects)} projects from {FILENAME}")
+    filename = DEFAULT_FILENAME
+    projects = load_and_process_file(filename)
+    print(f"Loaded {len(projects)} projects from {filename}")
 
     print_menu()
     option = input('>>> ').upper()
     while option != 'Q':
         if option == 'L':
             filename = input("Filename: ")
-            projects = load_and_process_file(filename)
+            try:
+                projects = load_and_process_file(filename)
+            except FileNotFoundError:
+                out_file = open(filename, "w")
+                out_file.close()
             print(f"Loaded {len(projects)} projects from {filename}")
         elif option == 'S':
             filename = input("Filename: ")
@@ -30,13 +35,13 @@ def main():
             incomplete_projects = [project for project in projects if project.completion_percentage < 100]
             incomplete_projects.sort()
             for incomplete_project in incomplete_projects:
-                print(incomplete_project)
+                print(f"  {incomplete_project}")
             # Display complete projects, sorted by priority
             print("Completed projects:")
             complete_projects = [project for project in projects if project.completion_percentage == 100]
             complete_projects.sort()
             for complete_project in complete_projects:
-                print(complete_project)
+                print(f"  {complete_project}")
 
         elif option == 'F':
             # Get day, month, year for search date
@@ -58,15 +63,23 @@ def main():
                 print(i, project)
             project_choice = int(input("Project choice: "))
             print(projects[project_choice])
-            update_project(project_choice, projects)
+            try:
+                new_percentage = int(input("New percentage: "))
+            except ValueError:
+                new_percentage = projects[project_choice].completion_percentage
+            try:
+                new_priority = int(input("New priority: "))
+            except ValueError:
+                new_priority = projects[project_choice].priority
+            projects[project_choice].update_project(new_percentage, new_priority)
         else:
             print("Invalid option!")
         # Get option for next loop
         print_menu()
         option = input('>>> ').upper()
-    save_option = input(f"Would you like to save {FILENAME}? ")
+    save_option = input(f"Would you like to save {filename}? ")
     if save_option == 'Y':
-        save_projects(FILENAME, projects)
+        save_projects(filename, projects)
     print("Thank you for using custom-built project management software.")
 
 
@@ -91,15 +104,7 @@ def save_projects(filename, projects):
         for project in projects:
             out_file.write(
                 f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
-        print(f"{len(projects)} saved to {FILENAME}")
-
-
-def update_project(project_choice, projects):
-    """Update specific project from given list of projects."""
-    new_percentage = int(input("New percentage: "))
-    new_priority = int(input("New priority: "))
-    projects[project_choice].completion_percentage = new_percentage
-    projects[project_choice].priority = new_priority
+        print(f"{len(projects)} saved to {DEFAULT_FILENAME}")
 
 
 def add_new_project(projects):

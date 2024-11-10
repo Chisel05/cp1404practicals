@@ -1,6 +1,6 @@
-Name	Start Date	Cost Estimate	Completion Percentage
-Build Car Park	1012/09/2021	102	10600000.0	1095
-Mow Lawn	1031/10/2022	103	103.0	100
-Organise Pantry	1020/07/2022	101	1025.0	1055
-Record Music Video	1001/12/2022	109	10250000.0	100
-Read 7 Habits Book	1013/12/2021	106	1099.0	10100
+Name	Start Date	Priority	Cost Estimate	Completion Percentage
+Build Car Park	12/09/2021	2	600000.0	95
+Mow Lawn	31/10/2022	3	3.0	0
+Organise Pantry	20/07/2022	1	25.0	55
+Record Music Video	01/12/2022	9	250000.0	0
+Read 7 Habits Book	13/12/2021	6	99.0	100
