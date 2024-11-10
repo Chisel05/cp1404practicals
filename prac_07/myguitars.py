@@ -12,6 +12,7 @@ def main():
             parts = line.strip().split(',')
             guitars.append(Guitar(parts[0], parts[1], float(parts[2])))
 
+    guitars.sort()
     for guitar in guitars:
         print(guitar)
 
