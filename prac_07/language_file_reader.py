@@ -15,7 +15,7 @@ def main():
     languages = []
     # Open the file for reading
     in_file = open('languages.csv', 'r')
-    # File format is like: Language,Typing,Reflection,Year
+    # File format is like: Language,Typing,Reflection,Year,Pointer_Arithmetic
     # 'Consume' the first line (header) - we don't need its contents
     in_file.readline()
     # All other lines are language data
