@@ -55,9 +55,9 @@ def main():
             # Get filtered list of projects
             filtered_projects = get_filtered_projects(projects, search_date)
             # Print list of filtered objects
-            # filtered_projects.sort(key=lambda project: project.start_date, reverse=True)
-            for filtered_project in filtered_projects:
-                print(filtered_project)
+            print_sorted_projects(filtered_projects)
+            # for filtered_project in filtered_projects:
+            #     print(filtered_project)
 
         elif option == 'A':
             print("Let's add a new project")
@@ -87,6 +87,15 @@ def main():
     if save_option == 'Y':
         save_projects(filename, projects)
     print("Thank you for using custom-built project management software.")
+
+
+def print_sorted_projects(projects):
+    dates = [project.get_converted_start_date() for project in projects]
+    dates.sort()
+    for date in dates:
+        for project in projects:
+            if project.get_converted_start_date() == date:
+                print(project)
 
 
 def get_filtered_projects(projects, search_date):
