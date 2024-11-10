@@ -1,8 +1,8 @@
 """
-Estimate time: 60min
-Actual time:
-
 Program for managing various projects, loading & storing said projects in a default or specified text file.
+
+Estimate time: 60min
+Actual time: 4hrs (cumulatively)
 """
 from project import Project
 import datetime
@@ -90,6 +90,7 @@ def main():
 
 
 def print_sorted_projects(projects):
+    """Print list of projects in ascending order according to start date"""
     dates = [project.get_converted_start_date() for project in projects]
     dates.sort()
     for date in dates:
