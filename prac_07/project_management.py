@@ -43,6 +43,30 @@ def main():
             complete_projects.sort()
             for complete_project in complete_projects:
                 print(complete_project)
+        elif option == 'F':
+            search_date = (input("Show projects that start after date (dd/mm/yy): ").split('/'))
+            search_date = datetime.date(int(search_date[2]), int(search_date[1]), int(search_date[0]))
+            filtered_projects = []
+            for project in projects:
+                parts = project.start_date.split('/')
+                project_date = datetime.date(int(parts[2]), int(parts[1]), int(parts[0]))
+                if project_date > search_date:
+                    filtered_projects.append(project)
+            filtered_projects.sort()
+            for filtered_project in filtered_projects:
+                print(filtered_project)
+        elif option == 'A':
+            print("Let's add a new project")
+            add_new_project(projects)
+        elif option == 'U':
+            for i, project in enumerate(projects):
+                print(i, project)
+            project_choice = int(input("Project choice: "))
+            print(projects[project_choice])
+            new_percentage = int(input("New percentage: "))
+            new_priority = int(input("New priority: "))
+            projects[project_choice].completion_percentage = new_percentage
+            projects[project_choice].priority = new_priority
         else:
             print("Invalid option!")
         # Get option for next loop
@@ -50,8 +74,18 @@ def main():
         option = input('>>> ').upper()
 
 
+def add_new_project(projects):
+    """Append new Project object to provided list of projects"""
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost Estimate: $"))
+    completion_percentage = int(input("Percent complete: "))
+    projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
+
+
 def load_and_process_file(file_name):
-    """Load specified file & return list of object"""
+    """Load specified file & return list of object."""
     with open(file_name, 'r') as in_file:
         projects = []
         lines = in_file.readlines()
