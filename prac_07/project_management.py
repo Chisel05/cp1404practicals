@@ -4,19 +4,19 @@ Actual time:
 """
 from project import Project
 
-filename = "projects.txt"
+FILENAME = "projects.txt"
 
 
 def main():
     print("Welcome to Pythonic Project Management")
-    projects = load_and_process_file(filename)
-    print(f"Loaded {len(projects)} projects from {filename}")
+    projects = load_and_process_file(FILENAME)
+    print(f"Loaded {len(projects)} projects from {FILENAME}")
 
     print_menu()
     option = input('>>> ').upper()
     while option != 'Q':
         if option == 'L':
-            print("Load option")
+            load_and_process_file(FILENAME)
         else:
             print("Invalid option!")
         # Get option for next loop
