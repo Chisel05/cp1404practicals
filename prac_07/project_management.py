@@ -9,6 +9,7 @@ FILENAME = "projects.txt"
 
 
 def main():
+    """Project management program with multiple features including: loading projects from a file, adding projects, updating projects, filtering projects, displaying your list of projects, and saving your list of projects"""
     print("Welcome to Pythonic Project Management")
     projects = load_and_process_file(FILENAME)
     print(f"Loaded {len(projects)} projects from {FILENAME}")
