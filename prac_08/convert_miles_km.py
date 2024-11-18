@@ -12,11 +12,13 @@ class MilesKmApp(App):
     km = StringProperty()
 
     def build(self):
+        """Build main app."""
         self.title = 'Miles and Km'
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
     def handle_conversion(self):
+        """Handle conversion from miles to km."""
         try:
             miles = float(self.root.ids.miles.text)
             self.km = str(miles * MILES_TO_KM)
@@ -24,6 +26,7 @@ class MilesKmApp(App):
             self.km = str(0.0)
 
     def handle_increment(self, increment):
+        """Handle increment of miles."""
         try:
             miles = int(self.root.ids.miles.text) + increment
             self.root.ids.miles.text = str(miles)
