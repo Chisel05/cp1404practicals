@@ -13,4 +13,4 @@ class MilesKmApp(App):
         return self.root
 
 
-MilesAndKmApp().run()
+MilesKmApp().run()
