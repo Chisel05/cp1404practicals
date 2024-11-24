@@ -5,6 +5,7 @@ from taxi import Taxi
 
 
 def main():
+    """Program that tests the Taxi class."""
     my_taxi = Taxi("Prius 1", 100)
     # First fare (don't have to start fare because it's already at 0).
     my_taxi.drive(40)
