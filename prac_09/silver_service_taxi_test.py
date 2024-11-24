@@ -8,8 +8,8 @@ def main():
     """Program that tests the SilverServiceTaxi class."""
     my_silver_service_taxi = SilverServiceTaxi(name='Hummer', fanciness=2, fuel=200)
     my_silver_service_taxi.drive(18)
-    assert my_silver_service_taxi.get_fare() == 48.78
-    print(my_silver_service_taxi.get_fare())
+    assert my_silver_service_taxi.get_fare() == 48.80
+    print(f"Fare = ${my_silver_service_taxi.get_fare():.2f}")
 
 
 main()
